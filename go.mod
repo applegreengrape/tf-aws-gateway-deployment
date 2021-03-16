@@ -1,4 +1,4 @@
-module github.com/javierropi/tf-aws-gateway-deployment/metadata
+module github.com/javierropi/tf-aws-gateway-deployment/extendedapigateway
 
 go 1.16
 

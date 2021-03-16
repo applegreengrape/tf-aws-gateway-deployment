@@ -1,4 +1,4 @@
-package aws
+package extendedapigateway
 
 import (
 	"fmt"
