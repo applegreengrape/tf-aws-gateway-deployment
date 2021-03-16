@@ -1,4 +1,4 @@
-module github.com/javierropi/tf-aws-gateway-deployment/extendedapigateway
+module github.com/javierropi/tf-aws-gateway-deployment
 
 go 1.16
 
@@ -11,4 +11,8 @@ require (
 	github.com/mattn/go-colorable v0.1.7 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.1 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
+  github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema
+	github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation
+	github.com/terraform-providers/terraform-provider-aws/aws/internal/keyvaluetags
+	github.com/terraform-providers/terraform-provider-aws/aws/internal/mutexkv
 )
