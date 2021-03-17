@@ -235,13 +235,3 @@ func resourceAwsApiGatewayDeploymentDelete(d *schema.ResourceData, meta interfac
   return nil
 }
 
-
-
-Javier Rodriguez
-Senior Software Engineer
-2 London Bridge, SE1 9RA | London | United Kingdom
-javier.rodriguez@slalom.com | +44 7500 297248          
- 
-Visit us at slalombuild.com | Instagram | Twitter | LinkedIn
- 
-
