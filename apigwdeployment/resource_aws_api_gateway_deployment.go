@@ -4,12 +4,7 @@ import (
 	"fmt"
 	"context"
 
-	//"time"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
-	//"google.golang.org/grpc/metadata"
-
-	//"github.com/aws/aws-sdk-go/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
