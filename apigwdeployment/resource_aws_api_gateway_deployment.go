@@ -108,7 +108,10 @@ func resourceAwsApiGatewayDeploymentCreate(d *schema.ResourceData, meta interfac
 	for k, v := range d.Get("canary_settings_stageVariableOverrides").(map[string]interface{}) {
 		variables[k] = v.(string)
 	}
-
+     
+	/*
+	// https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/apigateway#Client.CreateDeployment
+	
 	var err error
 	deployment, err := client.CreateDeployment(&apigateway.CreateDeploymentInput{
 		CacheClusterEnabled: new(bool),
@@ -123,7 +126,8 @@ func resourceAwsApiGatewayDeploymentCreate(d *schema.ResourceData, meta interfac
 	})
 	if err != nil {
 		return fmt.Errorf("Error creating API Gateway Deployment: %s", err)
-	}
+	}*/
+	
 
 	d.SetId(aws.StringValue(deployment.Id))
 	log.Printf("[DEBUG] API Gateway Deployment ID: %s", d.Id())
