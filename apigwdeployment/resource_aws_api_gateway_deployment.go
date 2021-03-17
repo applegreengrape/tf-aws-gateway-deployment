@@ -2,14 +2,9 @@ package apigwdeployment
 
 import (
 	"fmt"
-	"log"
-
-	//"time"
+	"context"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	//"google.golang.org/grpc/metadata"
-
-	//"github.com/aws/aws-sdk-go/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/service/apigateway"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -93,11 +88,8 @@ func resourceAwsApiGatewayDeployment() *schema.Resource {
 }
 
 func resourceAwsApiGatewayDeploymentCreate(d *schema.ResourceData, meta interface{}) error {
-	cfg:= meta.(aws.Config)
-
-	client:= apigateway.NewFromConfig(cfg)
-	// Create the gateway
-	log.Printf("[DEBUG] Creating API Gateway Deployment")
+	cfg := meta.(aws.Config)
+	client := apigateway.NewFromConfig(cfg)
 
 	variables := make(map[string]string)
 	for k, v := range d.Get("variables").(map[string]interface{}) {
@@ -108,12 +100,9 @@ func resourceAwsApiGatewayDeploymentCreate(d *schema.ResourceData, meta interfac
 	for k, v := range d.Get("canary_settings_stageVariableOverrides").(map[string]interface{}) {
 		variables[k] = v.(string)
 	}
-     
-	/*
-	// https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/apigateway#Client.CreateDeployment
 	
 	var err error
-	deployment, err := client.CreateDeployment(&apigateway.CreateDeploymentInput{
+	deployment, err := client.CreateDeployment(context.TODO(), &apigateway.CreateDeploymentInput{
 		CacheClusterEnabled: new(bool),
 		CacheClusterSize:    new(string),
 		CanarySettings:      &apigateway.DeploymentCanarySettings{PercentTraffic: aws.Float64(d.Get("canary_settings_percentTraffic").(float64)), StageVariableOverrides: aws.StringMap(stageVariablesOverrrides), UseStageCache: aws.Bool(d.Get("canary_settings_percentTraffic").(bool))},
@@ -126,11 +115,7 @@ func resourceAwsApiGatewayDeploymentCreate(d *schema.ResourceData, meta interfac
 	})
 	if err != nil {
 		return fmt.Errorf("Error creating API Gateway Deployment: %s", err)
-	}*/
-	
-
-	d.SetId(aws.StringValue(deployment.Id))
-	log.Printf("[DEBUG] API Gateway Deployment ID: %s", d.Id())
+	}
 
 	return nil
 	//return resourceAwsApiGatewayDeploymentRead(d, meta)
