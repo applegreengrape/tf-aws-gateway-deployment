@@ -35,7 +35,7 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-
+terraform.d/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
